@@ -74,6 +74,8 @@ Enhancements/recommendations for the code:
 2. Suitable checks, either by using if - else or by using exceptions can be implemented so as to ensure the user 
 entered data is appropriate. eg, salary can't be negative, so a check can be added to ensure that the salary is 
 a non negative value.
+3. I haven't included any constructor to initialize the salary to the current user entered salary because it was not needed. Anyways, you may include it as per your needs.
+4. The code can be automated by incorporating a while/do while loop in the class containing the main function.
 -----------------------------------------
 Details related to code:
 
