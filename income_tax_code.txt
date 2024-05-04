@@ -70,9 +70,12 @@ i.compute(salary) ;
 /*
 
 Enhancements/recommendations for the code:
-other deductions like insurances, PPF, etc can also be included suitably.
-
-
+1. Other deductions like insurances, PPF, etc can also be included suitably.
+2. Suitable checks, either by using if - else or by using exceptions can be implemented so as to ensure the user 
+entered data is appropriate. eg, salary can't be negative, so a check can be added to ensure that the salary is 
+a non negative value.
+-----------------------------------------
+Details related to code:
 
 to access compute() method by using the classname in which it is defined, the method must be static.
 
