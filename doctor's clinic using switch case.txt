@@ -9,7 +9,7 @@ asked to move to first queue.
 import java.lang.* ;
 import java.util.* ;
 
-class student// extends MyException
+class student
 {
 public static void main(String args[])
 {
