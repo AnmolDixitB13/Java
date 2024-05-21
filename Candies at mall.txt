@@ -1,8 +1,13 @@
 /*
-There is a jar containing candies for sale at a shop. Jar has the capacity, say n, i.e. jar can contain maximum n candies when jar is full. When ever an order is processed, the candy count in the jar is decreased suitably. A minimum number of candies must always be present in the jar. If the no. of candies present in the jar goes below this threshold, then the jar must be refilled fully, upto n candies in it.
+There is a jar containing candies for sale at a shop. Jar has the capacity, say n, i.e.
+jar can contain maximum n candies when jar is full. When ever an order is processed,
+the candy count in the jar is decreased suitably. A minimum number of candies must
+always be present in the jar. If the no. of candies present in the jar goes below this 
+threshold, then the jar must be refilled fully, upto n candies in it.
 
 
-A situation can happen, eg the n value is 100, but the customer needs 200 candies and so such also may also have to be processed.
+A situation can happen, eg the n value is 100, but the customer needs 200 candies and so
+such also may also have to be processed.
 
 Write a program suitably to implement the jar's working, and taking care that the situation, just mentioned should also be taken care of.
 */
