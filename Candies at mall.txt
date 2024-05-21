@@ -9,7 +9,8 @@ threshold, then the jar must be refilled fully, upto n candies in it.
 A situation can happen, eg the n value is 100, but the customer needs 200 candies and so
 such also may also have to be processed.
 
-Write a program suitably to implement the jar's working, and taking care that the situation, just mentioned should also be taken care of.
+Write a program suitably to implement the jar's working, and taking care that the situation, 
+just mentioned should also be taken care of.
 */
 
 import java.lang.* ;
