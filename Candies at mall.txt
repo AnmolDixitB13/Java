@@ -193,11 +193,16 @@ input = temp ;
 }
 }
 /*
+Observations:
 
-while(1): error: incompatible types: int cannot be converted to boolean,
+1. writing while(1) throws error.
+error: incompatible types: int cannot be converted to boolean,
 so write while(true) instead of while(1).
 
-initialize the parameters to be used in if statements to 0 at the beginning of the code,
-else compiler throws error 'value/parameeter not initialized.
+2. initialize the parameters to be used in if statements to 0 at the beginning of the code,
+else compiler throws error 'value/parameter not initialized.
 
+Other things:
+
+I haven't used constructors in this code, but you may incorporate them into your program suitably.
 */
