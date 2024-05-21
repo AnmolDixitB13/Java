@@ -92,3 +92,9 @@ choice2 = S.nextInt() ;
 }
 
 
+/*
+Improvements possible in this program:
+Suitable checks either by using if - else or by using exceptions can be added to ensure 
+that the data/input that the user enters is appropriate. For example, age is usually > 0 
+and < 100 (or say upto 120 sometimes), but can't be negative. So, suitable checks can be implemented either with the help of if - else statements or by using user defined exceptions.
+*/
