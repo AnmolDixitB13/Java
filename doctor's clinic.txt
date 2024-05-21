@@ -10,7 +10,7 @@ i.e. senior citizens' queue is > 4, senior citizens are to be asked to move to f
 import java.lang.* ;
 import java.util.* ;
 
-class student// extends MyException
+class Execution	
 {
 public static void main(String args[])
 {
