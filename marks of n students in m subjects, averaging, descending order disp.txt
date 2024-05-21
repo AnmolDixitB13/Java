@@ -133,12 +133,16 @@ methods.cal_avg(marks, roll, n_stud, n_sub) ;
 }
 
 /*
-class student extends methods gives no error, but is not required
+
+My observations when I was doing this program:
+
+1. class student extends methods gives no error, but is not required
 as we use classname methods to access the method cal_avg defined in it
 (methods.cal_avg(marks, roll, n_stud, n_sub) ;) .
 
-class student extends myException throws error
+2. class student extends myException throws error
 'constructor myException in class myException cannot be applied to given types.'
 
-class student extends Scanner throws error 'cannot inherit from final Scanner'.
+3. class student extends Scanner throws error 'cannot inherit from final Scanner'.
+
 */
