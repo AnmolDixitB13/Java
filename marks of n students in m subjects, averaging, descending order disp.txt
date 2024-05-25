@@ -146,3 +146,15 @@ as we use classname methods to access the method cal_avg defined in it
 3. class student extends Scanner throws error 'cannot inherit from final Scanner'.
 
 */
+
+/*
+Improvements that can be done in this code:
+
+1. A string can be incorporated to store the names of the students, just as we have arrays
+to store their marks.
+2. Arrays can also be incorporated to store total marks, percent and grades in individual 
+subjects and overall grades of all students.
+3. This program can also be tried using DSA in Java, which would be a more robust programming 
+approach.
+
+*/
