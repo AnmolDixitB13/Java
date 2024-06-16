@@ -1,6 +1,6 @@
 # Java
 
-As and when I will develop a project/mini project in java, I upload it here for the following reason(s):
+As and when I will develop a project/mini project in Java, I upload it here for the following reason(s):
 
     i. As a reference to people who are working on similar project(s)
     ii. For others to take new ideas about their upcoming/undergoing project(s)
