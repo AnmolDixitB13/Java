@@ -1,0 +1,208 @@
+```java
+import java.util.Scanner ;
+import java.util.ArrayList ;
+
+class Order
+{
+float tot_amt, gst_amt ;
+float temp ;
+
+String orderId, location ; 
+float amount, gst, totalAmount ;
+int orderNumber ;
+
+	Order(String orderId, int orderNumber, String location, float amount, float gst, float totalAmount)
+	{
+	System.out.println("Order constructor invoked.") ;
+	this.orderId = orderId  ;
+	this.orderNumber = orderNumber  ;
+	this.location = location  ;
+	this.amount = amount  ;
+	this.gst = gst  ;
+	this.totalAmount = totalAmount ;
+	System.out.println("Order constructor exited.") ;
+	}
+
+void calculateTotalAmount()
+
+	{
+	this.gst_amt = amount*gst/100 ;
+	this.temp = this.amount + this.gst_amt ;
+	this.tot_amt = temp ;
+	} // end of calculateTotalAmount() method
+
+} // end of class Order
+
+class Client extends Order
+{
+float temp ;
+String creditExceeded ;
+
+String clientName, clientCity ;
+float clientCreditLimit, totalCreditUsed ;
+
+	Client(String orderId, int orderNumber, String location, float amount, float gst, float totalAmount, String clientName, String clientCity, float clientCreditLimit, float totalCreditUsed)
+	{
+	super(orderId, orderNumber, location, amount, gst, totalAmount) ;
+	this.clientName =  clientName ;
+	this.clientCity =  clientCity ;
+	this.clientCreditLimit = clientCreditLimit  ;
+	this.totalCreditUsed =  totalCreditUsed ;
+	System.out.println("Client constructor exited.") ;
+	}
+
+void updateCreditLimit()
+
+	{
+	this.temp = clientCreditLimit - totalCreditUsed ;
+	//this.clientCreditLimit = temp ; // to set new credit limit after suitable deduction
+	} // end of updateCreditLimit() method
+
+void checkCreditLimit()
+
+	{
+	if (temp < 0)
+		{
+		this.creditExceeded = "Yes" ;
+		}
+	else
+		{
+		this.creditExceeded = "No" ;
+		}
+	} // end of checkCreditLimit() method
+} // end of class Client
+
+class CreditLimit extends Client
+{
+int totalClients ;
+	CreditLimit(String orderId, int orderNumber, String location, float amount, float gst, float totalAmount, String clientName, String clientCity, float clientCreditLimit, float totalCreditUsed, int totalClients)
+	{
+	super(orderId, orderNumber, location, amount, gst, totalAmount, clientName, clientCity, clientCreditLimit, totalCreditUsed) ;
+	this.totalClients = totalClients ;
+	System.out.println("creditLimit constructor exited.") ;
+	}
+
+void getTotalClients()
+	{
+	System.out.println("Total no. of clients: "+totalClients) ;
+	} // end of getTotalClients() method
+
+void displayClientDetails()
+	{
+	System.out.println("_______________________________________________") ;
+	System.out.println("**********Client Details**********") ;
+	System.out.println("Client: "+clientName) ;
+	System.out.println("City: "+clientCity) ;
+	System.out.println("Total Credit Used: "+totalCreditUsed) ;
+	System.out.println("Credit Limit: "+clientCreditLimit) ;
+	System.out.println("Credit Limit Exceeded: "+creditExceeded) ;
+	System.out.println("_______________________________________________") ;
+	} // end of displayClientDetails() method
+
+void displayOrderDetails()
+	{
+	System.out.println("_______________________________________________") ;
+	System.out.println("**********Order Details**********") ;
+	System.out.println("Order ID: "+orderId) ;
+	System.out.println("Order Number: "+orderNumber) ;
+	System.out.println("Location: "+location) ;
+	System.out.println("Amount: "+amount) ;
+	System.out.println("GST %: "+gst) ;
+	System.out.println("GST: "+gst_amt) ;
+	System.out.println("Total Amount: "+tot_amt) ;
+	System.out.println("_______________________________________________") ;
+	} // end of displayOrderDetails() method
+
+
+} // end of class CreditLimit
+
+class Main extends CreditLimit
+{
+
+Main(String orderId, int orderNumber, String location, float amount, float gst, float totalAmount, String clientName, String clientCity, float clientCreditLimit, float totalCreditUsed, int totalClients)
+	{
+	super(orderId, orderNumber, location, amount, gst, totalAmount, clientName, clientCity, clientCreditLimit, totalCreditUsed, totalClients) ;
+	}
+
+public static void main(String args[])
+{
+Scanner S = new Scanner(System.in) ;
+String ans = "Yes" ;
+int totalClients, i ;
+float totalAmount = 0.0f ;
+
+ArrayList<String> arr_orderId = new ArrayList<>() ;
+ArrayList<Integer> arr_orderNumber = new ArrayList<>() ;
+ArrayList<String> arr_location = new ArrayList<>() ;
+ArrayList<Float> arr_amount = new ArrayList<>() ;
+ArrayList<Float> arr_gst_per = new ArrayList<>() ;
+ArrayList<Float> arr_totalAmount = new ArrayList<>() ;
+ArrayList<String> arr_clientName = new ArrayList<>() ;
+ArrayList<String> arr_clientCity = new ArrayList<>() ;
+ArrayList<Float> arr_clientCreditLimit = new ArrayList<>() ;
+ArrayList<Float> arr_totalCreditUsed = new ArrayList<>() ;
+
+
+System.out.println("Enter the details as and when prompted to.\n") ;
+
+do{
+System.out.println("Enter the customer order id:\t") ;
+arr_orderId.add(S.next()) ;
+
+System.out.println("Enter the customer order number:\t") ;
+arr_orderNumber.add(S.nextInt()) ;
+
+System.out.println("Enter the customer location:\t") ;
+arr_location.add(S.next()) ;
+
+System.out.println("Enter the order amount:\t") ;
+arr_amount.add(S.nextFloat()) ;
+
+System.out.println("Enter the gst percent (write 0 if gst is not applicable):\t") ;
+arr_gst_per.add(S.nextFloat()) ;
+
+System.out.println("Enter the client name:\t") ;
+arr_clientName.add(S.next()) ;
+
+System.out.println("Enter client city name:\t") ;
+arr_clientCity.add(S.next()) ;
+
+System.out.println("Enter the client's existing credit limit:\t") ;
+arr_clientCreditLimit.add(S.nextFloat()) ;
+
+System.out.println("Enter the credit that the client has used\t") ;
+arr_totalCreditUsed.add(S.nextFloat()) ;
+
+System.out.println("Do you want to add another client ?\t") ;
+ans = S.next() ;
+
+}while(ans.equalsIgnoreCase("Yes")) ;
+
+totalClients = arr_clientName.size() ;
+Main m ;
+for(i = 0; i < totalClients; ++i)
+	{
+	m = new Main(arr_orderId.get(i), arr_orderNumber.get(i), arr_location.get(i), arr_amount.get(i), arr_gst_per.get(i), totalAmount, arr_clientName.get(i), arr_clientCity.get(i), arr_clientCreditLimit.get(i), arr_totalCreditUsed.get(i), totalClients) ;
+
+	m.calculateTotalAmount() ;
+	m.updateCreditLimit() ;
+	m.checkCreditLimit() ;
+
+	m.getTotalClients() ;
+	m.displayClientDetails() ;
+	m.displayOrderDetails() ;
+	
+	} // end of for() loop
+
+} // end of main() method
+} // end of class Main
+
+/*
+Future Scope
+1. i/p validation to ensure with either if-else or with suitable Exception handling can be incorporated
+to ensure the data entered by the user is valid. eg. price/amount can't be negative, gst percent 
+should be between 0 and 28 %... and so on.
+2. discount feature can be added, just as we have feature to charge gst 
+*/
+
+```
