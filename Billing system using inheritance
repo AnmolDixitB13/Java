@@ -28,6 +28,7 @@ void calculateTotalAmount()
 	{
 	this.gst_amt = amount*gst/100 ;
 	this.temp = this.amount + this.gst_amt ;
+	//this.temp = amount + gst_amt ;    // this might also work correctly
 	this.tot_amt = temp ;
 	} // end of calculateTotalAmount() method
 
@@ -198,11 +199,12 @@ for(i = 0; i < totalClients; ++i)
 } // end of class Main
 
 /*
-Future Scope
-1. i/p validation to ensure with either if-else or with suitable Exception handling can be incorporated
+Future Scope / Possible Enhancements to this program:
+1. I/P validation can be incorporated with either if-else or with suitable Exception Handling 
 to ensure the data entered by the user is valid. eg. price/amount can't be negative, gst percent 
 should be between 0 and 28 %... and so on.
-2. discount feature can be added, just as we have feature to charge gst 
+2. Discount/Concession feature on Total Amount can be added, just as we have feature to charge GST.
+3. A suitable UI can be designed for the same along with a backend.
 */
 
 
