@@ -1,4 +1,4 @@
-```java
+
 import java.util.Scanner ;
 import java.util.ArrayList ;
 
@@ -205,4 +205,4 @@ should be between 0 and 28 %... and so on.
 2. discount feature can be added, just as we have feature to charge gst 
 */
 
-```
+
