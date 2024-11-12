@@ -47,7 +47,7 @@ sleep(milli_seconds) or classname.sleep(milli_seconds) or threadObject.sleep(mil
 catch(Exception e) ; throws error, use ONLY catch(Exception e) {},block can be empty but the braces are needed and no semicolon.
 */
 
-_____________________________________________________________________________________________
+//_____________________________________________________________________________________________
 
 //Multithreading using inheritance (extends Thread)
 
@@ -92,7 +92,7 @@ System.out.println("Fin de main() fonction") ;
 }
 
 
-_____________________________________________________________________________________________
+//_____________________________________________________________________________________________
 
 
 //Multithreading using both - inheritance (extends Thread) & interfaces (implements Runnable)
