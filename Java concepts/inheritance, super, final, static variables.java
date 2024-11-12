@@ -58,7 +58,7 @@ Accordingly, if we write ' class student extends b or c ', the program executes 
 
 */
 
-_______________________________________________________________________________________________
+//_______________________________________________________________________________________________
 
 //use of super and final keyword keyword
 
@@ -120,7 +120,7 @@ By using super keyword, method in the IMMEDIATE PARENT CLASS is executed, provid
 If in class a, we write final void display() instead of void display(), we get the error ' cannot override parent method display() '.
 
 */
-_______________________________________________________________________________________________
+//_______________________________________________________________________________________________
 
 // Program to demonstrate accessing of super & subclass values. 
 
