@@ -36,7 +36,7 @@ for(i=0; i<o.length; ++i)
 if brackets are not put after Object in main()
 error: array required, but Object found
 */
-_______________________________________________________________________
+//_______________________________________________________________________
 
 /* Previous program using static variable */
 
@@ -87,7 +87,7 @@ it throws this error.
 error: non-static variable i cannot be referenced from a static contex
 */
 
-_____________________________________________________________________________________
+//_____________________________________________________________________________________
 
 /* If the values to be returned are of same data type, so, in such cases, one can also use
 array of the respective data type to return the set of values from the method. */
@@ -138,7 +138,7 @@ object, then we get this error.
 error: incompatible types: float[] cannot be converted to Object[]
 So, one has to be careful here.
 */
-_____________________________________________________________________________________
+//_____________________________________________________________________________________
 
 class Constants
 {
