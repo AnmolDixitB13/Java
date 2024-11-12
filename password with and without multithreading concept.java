@@ -43,7 +43,7 @@ Scanner S = new Scanner(System.in) ;
 }
 }
 
-________________________________________________________________________________________
+//________________________________________________________________________________________
 
 // Previous program using while & for loops
 
@@ -61,7 +61,8 @@ boolean b ;
 String password = "abc" ;
 Scanner S = new Scanner(System.in) ;
 
-	while(count < 4)		// using for loop, use for(i = 0; i<4; ++i) instead of while(count < 4)
+	while(count < 4)		
+	// while using for loop, use for(i = 0; i<4; ++i) instead of while(count < 4)
 
 	{
 	System.out.println("enter the password") ;
@@ -70,7 +71,8 @@ Scanner S = new Scanner(System.in) ;
 
 	if(b)
 	{
-	System.out.println("Correct password") ;break ;
+	System.out.println("Correct password") ;
+	break ;
 	}
 
 	
@@ -87,9 +89,12 @@ Scanner S = new Scanner(System.in) ;
 }
 }
 
-________________________________________________________________________________________
+//________________________________________________________________________________________
 /*
 Extension of the previous program.
+
+Previous program using multithreading.
+
 If the user enters wrong password for 3 consecutive times, control to the
 user is suspended for 10 seconds.
 */
