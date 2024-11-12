@@ -35,7 +35,7 @@ If extends A was not written at class TestStaticAccess extends A, in that case, 
 method in class A, we had to use class name to access it's method i.e. A.displayA() ;
 */
 
-_____________________________________________________________________
+//_____________________________________________________________________
 
 /*
 Accessing 2 static methods - 1 in the class containing main function & other static method
@@ -70,7 +70,7 @@ TestStaticAccess.displayB() ;	//no errors
 
 }//end of class TestStatic
 
-_______________________________________________________________________________
+//_______________________________________________________________________________
 
 /*
 Accessing static method of one class using the claasname of another class i.e. accessing static method 
@@ -113,7 +113,7 @@ This is class A
 This is the class containing main function
 This is class A
 */
-======================================================================================
+//======================================================================================
 
 Below 2 examples are related. 
 
@@ -174,7 +174,7 @@ Value of a in Main() is 45
 Value of b in Main() is 90
 */
 
-______________________________________________________________________________
+//______________________________________________________________________________
 
 import java.util.Scanner ;
 
