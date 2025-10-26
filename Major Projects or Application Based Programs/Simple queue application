@@ -478,6 +478,7 @@ class RectangleQueue
 		}
 	}
 
+
 	public class Main 
 	{
 		public static void main(String[] args)
@@ -620,9 +621,7 @@ class RectangleQueue
 			}   // end of while loop
 
 		}
-	}
-	
-	
+	}	
 
 /*
 
