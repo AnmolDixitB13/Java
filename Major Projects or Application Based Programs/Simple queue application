@@ -5,9 +5,12 @@ Program structure
 
 class Rectangle
 - here objects of type Rectangle are created
+- attributes / fields of the rectangle objects are defined here
 
 class RectangleQueue
-- here queue is created and various methods are defined, say adding, editing, reading and deleting members from queue, etc
+- Rectangle objects, created by Rectangle class are stored in a queue, which is present in this class
+- here queue is created and various methods are defined, say adding, editing, reading and deleting
+members [ rectangle objects ] from queue, etc
 - this is a singleton class
 
 class Main
