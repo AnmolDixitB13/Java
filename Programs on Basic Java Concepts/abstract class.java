@@ -91,7 +91,7 @@ Many dogs are playful.
 Dogs like to smell around.
 Animal's age is 7 years.
 
-#Observations:
+Observations:
 
 If a method being called is present in the subclass / childclass, i.e., here, the class inheriting 
 the abstract class, the same method present in the subclass will be executed if that method is 
@@ -102,6 +102,14 @@ inheriting the abstract class, the same method present in the parent class i.e. 
 will be executed if that method is invoked by the subclasses' object. smell() method is the example
 of the same.
 
+Suggestions:
+Use @Override while overriding parent methods and while implementing / overriding interface methods. 
+Although program can work even without writing @Override, it is recommened to use it if in case to 
+prevent mistakes while overriding it. Eg, if the no. of arguments to method are different than in parent 
+class while overriding it, compiler will throw error and this will notify us that there is some problem.
 
+Without using @Override, one won't get any such error, so our mistake might go unnoticed, atleast 
+initially.
+it, the 
 */
 
