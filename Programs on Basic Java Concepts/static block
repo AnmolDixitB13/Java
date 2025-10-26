@@ -1,0 +1,32 @@
+
+import java.util.*;
+
+class High
+{
+  static{
+    System.out.println("High class static block");
+  }
+}
+
+class Main {
+  static{
+        System.out.println("Main class static block - at the beginning of class");
+      }
+  
+    public static void main(String[] args) {
+      System.out.println("Main method");
+      // Class.forName("High"); // Forces class loading
+      
+      High h = new High() ;
+    }
+      static{
+        System.out.println("Main class static block - at the end of class");
+      }
+}
+
+/*
+Main class static block - at the beginning of class
+Main class static block - at the end of class
+Main method
+High class static block
+*/
