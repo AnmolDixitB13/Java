@@ -95,12 +95,12 @@ Observations:
 
 If a method being called is present in the subclass / childclass, i.e., here, the class inheriting 
 the abstract class, the same method present in the subclass will be executed if that method is 
-invoked by the subclasses' object. play() method is the example of the same.
+invoked by the subclass' object. play() method is the example of the same.
 
 If a method being called is not present in the subclass / childclass, i.e., here, the class 
-inheriting the abstract class, the same method present in the parent class i.e. the abstract class 
-will be executed if that method is invoked by the subclasses' object. smell() method is the example
-of the same.
+inheriting the abstract class, then the same method present in the parent class i.e., here, the
+abstract class will be executed if that method is invoked by the subclasses' object. talk() & walk()
+methods are the examples of the same.
 
 Suggestions:
 Use @Override while overriding parent methods and while implementing / overriding interface methods. 
@@ -110,6 +110,4 @@ class while overriding it, compiler will throw error and this will notify us tha
 
 Without using @Override, one won't get any such error, so our mistake might go unnoticed, atleast 
 initially.
-it, the 
 */
-
