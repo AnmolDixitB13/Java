@@ -62,7 +62,8 @@ Child = object type
 
 Objects can only access methods visible to reference types.
 
-That's the difference w.r.t. overriding and polymorphism. If methods are overridden, Parent class(s) know about it, so there it doesn't throw error there.
+That's the difference w.r.t. overriding and polymorphism. If methods are overridden, Parent class(s)
+know about it, so there it doesn't throw error there.
 
 But since the methods are different here, display1() and display2(), we get error.
 */
