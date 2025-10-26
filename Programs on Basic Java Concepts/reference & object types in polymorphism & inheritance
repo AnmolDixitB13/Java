@@ -1,0 +1,68 @@
+// polymorphism and inheritance - reference and object types
+
+class Parent
+{
+    void display1()
+    {
+        System.out.println("Parent display.") ;
+    }
+}
+
+public class Child extends Parent
+{
+    void display2()
+    {
+        System.out.println("Child display.") ;
+    }
+    
+    public static void main(String[] args) {
+        
+        Parent p = new Parent() ;
+        p.display1() ;
+        // p.display2() ;  // error: cannot find symbol
+        
+        p = new Child() ;
+        p.display1() ;
+        // p.display2() ;  // error: cannot find symbol
+    }
+}
+----------------------------------------------------------------------
+
+
+class Parent
+{
+    void display1()
+    {
+        System.out.println("Parent display.") ;
+    }
+}
+
+public class Child extends Parent {
+    
+    void display2()
+    {
+        System.out.println("Child display.") ;
+    }
+    
+     public static void main(String[] args) {
+        
+        Child c = new Child() ;
+        c.display1() ;
+        c.display2() ;
+        
+        // c = new Parent() ;
+        // error: incompatible types: Parent cannot be converted to Child
+    }
+}
+
+/*
+Parent p = new Child() ;
+Parent = reference type
+Child = object type
+
+Objects can only access methods visible to reference types.
+
+That's the difference w.r.t. overriding and polymorphism. If methods are overridden, Parent class(s) know about it, so there it doesn't throw error there.
+
+But since the methods are different here, display1() and display2(), we get error.
+*/
