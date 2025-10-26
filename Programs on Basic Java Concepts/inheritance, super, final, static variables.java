@@ -166,3 +166,79 @@ ERROR : A non static variable cannot be reference from a static variable
 System.out.println("length is "+super(len)) ;	
 ERROR : Call to super must be first statement in the constructor
 */
+
+
+
+//=============================================================================
+
+// inheritance, final
+
+
+import java.util.*;
+
+class Parent
+{
+  void print()
+  {
+    System.out.println("In parent class") ;
+  }
+}
+
+public class Child extends Parent {
+  
+    void print()
+  {
+    System.out.println("In child class") ;
+  }
+  
+    public static void main(String[] args) {
+      
+      Child c = new Child() ;
+      c.print() ;
+  }
+}
+
+/*
+print method defined            Program output
+
+Only in parent class            in parent class
+Only in child class             in child class
+in both the classes             in child class
+
+It is a good practice to use the keywork @Override.
+*/
+
+---------------------------------------------------------
+
+class Parent
+{
+    void display()
+    {
+        System.out.println("This is parent class.");
+    }
+}
+
+class Child1 extends Parent
+{
+    final void display()
+    {
+        System.out.println("This is child1 class.");
+    }
+}
+
+class Child2 extends Parent         // no error
+// class Child2 extends Child1     // error
+{
+    void display()
+    {
+        System.out.println("This is child2 class.");
+    }
+    
+	public static void main(String[] args) {
+		
+	}
+}
+
+/*
+Alternate way to inherit a class - use sealed, non-sealed & permits.
+*/
