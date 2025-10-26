@@ -91,11 +91,17 @@ Many dogs are playful.
 Dogs like to smell around.
 Animal's age is 7 years.
 
-Observations:
+#Observations:
 
-If a method being called is present in the subclass, i.e. the class inheriting the abstract class, the same method present in the subclass will be executed if that method is invoked by the subclasses' object. play() method is the example of the same.
+If a method being called is present in the subclass / childclass, i.e., here, the class inheriting 
+the abstract class, the same method present in the subclass will be executed if that method is 
+invoked by the subclasses' object. play() method is the example of the same.
 
-If a method being called is not present in the subclass, i.e. the class inheriting the abstract class, the same method present in the parent class i.e. the abstract class will be executed if that method is invoked by the subclasses' object. smell() method is the example of the same.
+If a method being called is not present in the subclass / childclass, i.e., here, the class 
+inheriting the abstract class, the same method present in the parent class i.e. the abstract class 
+will be executed if that method is invoked by the subclasses' object. smell() method is the example
+of the same.
+
 
 */
 
