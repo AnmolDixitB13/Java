@@ -1,7 +1,18 @@
 // queue example
 
 /*
-Program structure
+The following operations are to be performed:
+
+1. Creating rectangle objects
+2. Storing rectangle objects in a queue
+3. Displaying details of rectangle[s]
+4. Editing rectangle dimensions as specified by the user
+5. Deleting / removing rectangles from queue
+6. Comparing rectangles based on area / dimensions
+
+Program structure.
+
+The program has 3 classes:
 
 class Rectangle
 - here objects of type Rectangle are created
