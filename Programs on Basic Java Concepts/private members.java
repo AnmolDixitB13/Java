@@ -30,13 +30,11 @@ public static void main (String[] args) {
     
     m.changeData(10) ;
     System.out.println(m.getData()) ;
-    
-    
-    
+    // value is updated
 }
 }
 
-// even with inheritance, private can't be accessed
+// even with inheritance, private entities can't be accessed directly, or in the usual way
 
 -------------------------------------
 
