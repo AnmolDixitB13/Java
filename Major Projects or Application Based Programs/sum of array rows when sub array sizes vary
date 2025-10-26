@@ -1,0 +1,40 @@
+
+/*
+Find sum of individual rows in the array when the length of sub arrays is different
+*/
+
+import java.util.*;
+
+public class Main {
+    public static void main(String[] args) {
+      
+      int i, sum, j ;
+      int arr[][] = {{12, 43, 56, 32, 56} , {0, 43, 56}, {23, 21} } ;
+      
+      for(i = 0; i < arr.length; ++i)
+      {
+        int tempArr[] = arr[i] ;
+        
+        sum = 0 ;
+        for(j = 0; j < tempArr.length; ++j)
+        {
+          sum += tempArr[j] ;
+        }
+        
+        System.out.println("Sum of row " + (i + 1) + " of the array is " + sum + ".") ;
+      }
+  }
+}
+
+/*
+Alternately, one can also use this approach.
+for(i = 0; i < arr.length; ++i)
+{
+sum = 0 ;
+
+  for(j = 0; j < arr[i].length; ++j)
+  {
+  sum += arr[i][j] ;
+  }
+}
+*/
