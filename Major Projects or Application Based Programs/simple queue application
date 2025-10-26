@@ -1,0 +1,625 @@
+// queue example
+
+/*
+Program structure
+
+class Rectangle
+- here objects of type Rectangle are created
+
+class RectangleQueue
+- here queue is created and various methods are defined, say adding, editing, reading and deleting members from queue, etc
+- this is a singleton class
+
+class Main
+- program is executed from here
+*/
+
+import java.util.Queue ;
+import java.util.LinkedList ;
+import java.util.Arrays ;
+import java.util.Scanner ;
+import java.util.Iterator ;
+import java.util.List ;
+import java.util.ArrayList ;
+
+class Rectangle
+{
+	int id ;
+	String name ;
+	float len, bre, area ;
+
+	Rectangle(int id, String name, float len, float bre)
+	{
+		this.id = id ;
+		this.name = name ;
+		this.len = len ;
+		this.bre = bre ;
+		this.area = this.len * this.bre ;
+	}
+
+	Rectangle()
+	{
+
+	}
+}
+
+
+
+class RectangleQueue
+{
+	private static RectangleQueue rq = null ;
+
+	private Queue<Rectangle> rect ;
+
+	/*
+	This class is singleton to ensure only 1 object / instance of this class is active when the program is
+	running. Everytime an instance of this class is created, a new queue will be formed. So, to ensure
+	multiple queues are not created everytime an object of this class is instantiated, we ensure that only
+	1 object of this class is active.
+	*/
+
+	/*
+	Queue<Rectangle> rect ; if this queue declaration is made inside the constructor itself, other methods
+	in the class are unable to find rect queue object and we get error rect symbol not found. This is because
+	if queue or any variable is declared inside the constructor, it becomes a local variable whose scope is the
+	constructor. Once constructor stops, variable / object declared inside them also get destroyed. So, other
+	methods are unable to find it. So, its better to declare the object outside constructor and instantiate
+	inside the constructor.
+	*/
+
+	private RectangleQueue()
+	{
+		System.out.println("Before queue instantiation.") ;
+		rect = new LinkedList<>() ;
+		System.out.println("After queue instantiation.") ;
+	}
+
+	static RectangleQueue getRectangleQueueInstance()
+	{
+		if (rq == null)
+		{
+			rq = new RectangleQueue() ;
+		}
+
+		else
+		{
+			System.out.println("Object was previously created & returned. So, no new objects can be created or returned.") ;
+		}
+
+		return rq ;
+	}
+	
+	String printRect(Rectangle r)
+	{
+	    String str = "Id: " + r.id + "\nName: " + r.name + "\nLength: " + r.len + " \nBreadth " + r.bre + " \nArea " + r.area + "\n" ; 
+	    return str ;
+	}
+
+
+    boolean checkEmpty()
+    {
+        if(rect.isEmpty())
+		{
+		    System.out.println("\nThe queue is empty.\n") ;
+		    return true ;
+		}
+		
+		else
+		{
+		    return false ;
+		}
+    }
+
+	void addRectangle(int id, String name, float len, float bre)
+	{
+		Rectangle r = new Rectangle(id, name, len, bre) ;
+		rect.offer(r) ;
+		System.out.println("Rectangle insertion successful.") ;
+		// rect.offer(new Rectangle(id, name, len, bre)) ; also works fine
+	}
+
+	void displayDetailsOfARectangle(int id)
+	{
+		boolean isPresent = false ;
+		
+		if(rq.checkEmpty())
+		{
+		    return ;
+		    // terminate the method here if the queue is empty
+		}
+		
+		for(Rectangle r : rect)
+		{
+			if(r.id == id)
+			{
+				isPresent = true ;
+				System.out.println("Id : " + r.id) ;
+				System.out.println("Name  : " + r.name) ;
+				System.out.println("Len  : " + r.len) ;
+				System.out.println("Bre  : " + r.bre) ;
+				System.out.println("Area  : " + r.area) ;
+			}
+		}
+
+		if(!isPresent)
+		{
+			System.out.println("There is no rectangle with rectangle id " + id + " in the queue.") ;
+		}
+	}
+
+
+	void editRectangleDimentions(int optionNo, int id, Scanner S)
+	{
+	    boolean isPresent = false ;
+	    
+	    Rectangle rectToEdit = null ;
+	    
+	    if(rq.checkEmpty())
+		{
+		    return ;
+		    // terminate the method here if the queue is empty
+		}
+	    
+		for(Rectangle r : rect)
+		{
+			if (r.id == id)
+			{
+			    System.out.println("\nRectangle found.\n") ;
+			    isPresent = true ;
+			    rectToEdit = r ;
+			    // store the object ref
+			}
+		}
+			
+			if(!isPresent)
+			{
+				System.out.println("\nThere is no rectangle with the id " + id + ".") ;
+				System.out.println("Could not update the specified dimensions.\n") ;
+				return ;
+				// terminate the method here
+		    }
+			    
+			if (optionNo == 1)
+			{
+				System.out.print("Enter the new length of the rectangle:\t") ;
+				float new_len = S.nextFloat() ;
+
+				rectToEdit.len = new_len ;
+				System.out.println("Length updation successful.\n") ;
+				
+				rectToEdit.area = rectToEdit.len * rectToEdit.bre ;
+			}
+
+			else if (optionNo == 2)
+			{
+				System.out.print("Enter the new breadth of the rectangle:\t") ;
+				float new_bre = S.nextFloat() ;
+
+				rectToEdit.bre = new_bre ;
+				System.out.println("Breadth updation successful.\n") ;
+				
+			    rectToEdit.area = rectToEdit.len * rectToEdit.bre ;
+			}
+
+			else
+			{
+				System.out.print("Enter the new length & breadth of the rectangle in this order:\t") ;
+				float new_len = S.nextFloat() ;
+				float new_bre = S.nextFloat() ;
+
+				rectToEdit.len = new_len ;
+			    rectToEdit.bre = new_bre ;
+				System.out.println("Length & Breadth updation successful.\n") ;
+				
+				rectToEdit.area = rectToEdit.len * rectToEdit.bre ;
+			}
+			// }
+			//}
+
+		}
+
+
+		void removeARectangleFromQueue(int id)
+		{
+		    if(rq.checkEmpty())
+		    {
+		        return ;
+		        // terminate the method here if the queue is empty
+		    }
+		    
+			boolean found = false ;
+			Rectangle temp ;
+
+			Iterator<Rectangle> it = rect.iterator() ;
+
+			while(it.hasNext())
+			{
+				temp = it.next() ;
+
+				if (temp.id == id)
+				{
+					found = true ;
+					it.remove() ;
+					System.out.println("Deletion successful.\n") ;
+				}
+			}
+
+				if(!found)
+				{
+					System.out.println("There is no rectangle with the id " + id + ".") ;
+					System.out.println("Could not delete the specified rectangle from the queue.\n") ;
+				}
+		}
+
+		void RectWithMinMaxArea()
+		{
+			if(rq.checkEmpty())
+    		{
+    		    return ;
+    		    // terminate the method here if the queue is empty
+    		}
+
+			// Initialize min and max with the area of the first rectangle
+			Iterator<Rectangle> it = rect.iterator() ;
+			Rectangle first = it.next() ;
+
+			float min = first.area ;
+			float max = first.area ;
+
+			Rectangle temp ;
+
+// 			Rectangle ref_min = null ;
+// 			Rectangle ref_max = null ;
+			// to store rectangle object reference
+
+            Rectangle ref_min = first ;  // min = rect having minimum area
+            Rectangle ref_max = first ;  // max = rect having maximum area
+            /* It is better to initialize these 2 object variables as if they are null, program throws 
+            null pointer exception */
+            
+			while (it.hasNext())
+			{
+				temp = it.next();
+
+				if (temp.area < min)
+				{
+					min = temp.area ;
+					ref_min = temp ;
+				}
+
+				if (temp.area > max)
+				{
+					max = temp.area ;
+					ref_max = temp ;
+				}
+			}
+			
+			System.out.println("Rectangle with minimum area is " + ref_min.id + ", with area = " + ref_min.area + ".");
+			System.out.println("Rectangle with maximum area is " + ref_max.id + ", with area = " + ref_max.area + ".");
+		}
+
+		void arrangeRectsAsPerDecreasingArea()
+		{
+		    if(rq.checkEmpty())
+		    {
+		        return ;
+		        // terminate the method here if the queue is empty
+		    }
+		    
+			List<Rectangle> list = new ArrayList<>(rect) ;
+			Rectangle temp ;
+
+			int i, j ;
+
+			for(i = 0; i < list.size(); ++i)
+			{
+				for(j = i + 1; j < list.size(); ++j)
+				{
+				if (list.get(i).area < list.get(j).area) 
+				{
+                    temp = list.get(i);
+                    list.set(i, list.get(j));
+                    list.set(j, temp);
+                }
+				}
+			}
+
+			for(i = 0; i < list.size(); ++i)
+			{
+				System.out.println(rq.printRect((Rectangle)list.get(i))) ;
+				System.out.println("_ _ _ _ _ _ _ _ _ _ _ _") ;
+			}
+
+		}
+
+		void RectsWithIdenticalDimensions()
+		{
+		    if(rq.checkEmpty())
+		    {
+		        return ;
+		        // terminate the method here if the queue is empty
+		    }
+		    
+		    boolean found = false ;
+		    
+			List<Rectangle> list = new ArrayList<>(rect) ; // Convert queue to list
+			Rectangle r1, r2 ;
+
+			for (int i = 0; i < list.size(); i++)
+			{
+				r1 = list.get(i);
+				for (int j = i + 1; j < list.size(); j++)
+				{
+					r2 = list.get(j) ;
+
+					if (r1.len == r2.len && r1.bre == r2.bre)
+					{
+					    found = true ;
+						System.out.println("Rectangle with rectangle ids " + r1.id + " & " + r2.id + " are identical to each other.") ;
+						System.out.println(rq.printRect(r1)) ;
+						System.out.println(rq.printRect(r2)) ;
+						System.out.println("_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _") ;
+					}
+				}
+			}
+			
+			if(!found)
+			{
+			    System.out.println("No records were found.") ;
+			}
+
+		}
+
+		void RectsWithSpecifiedDimensions(int optionNo, Scanner S)
+		{
+		    if(rq.checkEmpty())
+		    {
+		        return ;
+		        // terminate the method here if the queue is empty
+		    }
+		    
+			Queue<Rectangle> temp = new LinkedList<>() ;
+			int count = 0 ;
+			boolean found = false ;
+			float l, b ;
+
+			if (optionNo == 1)
+			{
+				System.out.println("Enter the length and breadth respectively.") ;
+				System.out.print("Lenght:\t") ;
+				l = S.nextFloat() ;
+
+				System.out.print("Breadth:\t") ;
+				b = S.nextFloat() ;
+
+				for(Rectangle r : rect)
+				{
+					if (r.bre == b && r.len == l)
+					{
+						found = true ;
+						temp.offer(r) ;
+						++count ;
+					}
+				}
+			}
+
+			else if (optionNo == 2)
+			{
+				System.out.print("Lenght:\t") ;
+				l = S.nextFloat() ;
+
+				for(Rectangle r : rect)
+				{
+					if (r.len == l)
+					{
+						found = true ;
+						temp.offer(r) ;
+						++count ;
+					}
+				}
+			}
+
+			else if (optionNo == 3)
+			{
+				System.out.print("Breadth:\t") ;
+				b = S.nextFloat() ;
+
+				for(Rectangle r : rect)
+				{
+					if (r.bre == b)
+					{
+						found = true ;
+						temp.offer(r) ;
+						++count ;
+					}
+				}
+			}
+
+			else
+			{
+				System.out.println("Invalid option entered") ;
+				return ;
+			}
+
+			if (found)
+			{
+				System.out.println("In all, " + count + " records were found.") ;
+				for(Rectangle t : temp)
+				{
+					System.out.println(rq.printRect(t)) ;
+					System.out.println("_ _ _ _ _ _ _ _ _ _ _ _") ;
+				}
+
+			}
+
+			else
+			{
+				System.out.println("No records were found.") ;
+			}
+
+
+			// ask user about dimensions
+			// then match with rects in queue and display suitably
+			// ask to enter any if that dimension is not a concern
+		}
+	}
+
+	public class Main 
+	{
+		public static void main(String[] args)
+		{
+			System.out.println("Entered main.") ;
+
+			Scanner S = new Scanner(System.in) ;
+
+			System.out.println("Before calling rq in main.") ;
+			RectangleQueue rq = RectangleQueue.getRectangleQueueInstance() ;
+			System.out.println("After calling rq in main.") ;
+
+			char continueProgram = 'y' ;
+			int choice ;
+
+			while(continueProgram == 'y')
+			{
+				System.out.println("Press:") ;
+				System.out.println("1. to add a new rectangle in the queue") ;
+				System.out.println("2. to read details of a rectangle in the queue") ;
+				System.out.println("3. to alter the details of a rectangle in the queue") ;
+				System.out.println("4. to delete / remove a rectangle from the queue") ;
+				System.out.println("5. to find out rectangle having minimum / least area") ;
+				System.out.println("6. to arrange all the rectangles in the decreasing order of their area") ;
+				System.out.println("7. to find out rectangles having user specified dimensions") ;
+				System.out.println("8 to find out all the rectangles in the queue that have identical dimensions") ;
+				System.out.println("0 to stop the program") ;
+				System.out.print("Enter your choice:\t") ;
+
+				choice = S.nextInt() ;
+
+				switch(choice)
+				{
+				case 0:
+					continueProgram = 'n' ;
+					break ;
+
+				case 1:
+					int a_id ;
+					String a_name ;
+					float a_len, a_bre ; // a = to be added
+
+					System.out.println("Enter the rectangle's id, name, length & breadth in this order.") ;
+					a_id = S.nextInt() ;
+					a_name = S.next() ;
+					a_len = S.nextFloat() ;
+					a_bre = S.nextFloat() ;
+					// these statements can be moved inside addRectangle() method
+					
+					rq.addRectangle(a_id, a_name, a_len, a_bre) ;
+					break ;
+
+				case 2:
+					int r_id ;  // read id
+					System.out.print("Enter the id of the rectangle to be read:\t") ;
+					r_id = S.nextInt() ;
+					// these statements can be moved inside displayDetailsOfARectangle() method
+					
+					rq.displayDetailsOfARectangle(r_id) ;
+					break ;
+
+				case 3:
+					int e_id ;  // edit id
+					System.out.print("Enter the id of the rectangle to be edited:\t") ;
+					e_id = S.nextInt() ;
+
+					System.out.println("\nPress:") ;
+					System.out.println("1 to alter length of a rectangle") ;
+					System.out.println("2 to alter breadth of a rectangle") ;
+					System.out.println("3 to alter length & breadth of a rectangle") ;
+					System.out.println("4 to cancel selection") ;
+					System.out.print("Enter your choice:\t") ;
+
+					choice = S.nextInt() ;
+
+					switch(choice)
+					{
+					case 1:
+						rq.editRectangleDimentions(1, e_id, S) ;
+						break ;
+
+					case 2:
+						rq.editRectangleDimentions(2, e_id, S) ;
+						break ;
+
+					case 3:
+						rq.editRectangleDimentions(3, e_id, S) ;
+						break ;
+
+					case 4:
+						break ;
+
+					default:
+						System.out.println("Invalid option entered.") ;
+						
+					// these statements can be moved inside editRectangleDimentions() method
+					}
+
+					break ; // break corresponding to case 3 of the main, outer switch
+
+				case 4:
+					int d_id ;  // d ~ deleted
+					System.out.print("Enter the id of the rectangle which has to be removed:\t") ;
+					d_id = S.nextInt() ;
+					// these statements can be moved inside removeARectangleFromQueue() method
+					
+					rq.removeARectangleFromQueue(d_id) ;
+					break ;
+
+				case 5:
+					rq.RectWithMinMaxArea() ;
+					break ;
+
+				case 6:
+					rq.arrangeRectsAsPerDecreasingArea() ;
+					break ;
+
+				case 7:
+					System.out.println("Press:") ;
+					System.out.println("1. to find out all the rectangles having particular length & breadth") ;
+					System.out.println("2. to find out all the rectangles having particular length") ;
+					System.out.println("3. to find out all the rectangles having particular breadth") ;
+					System.out.println("4 to cancel selection") ;
+					System.out.print("Enter your choice:\t") ;
+
+					choice = S.nextInt() ;
+					// these statements can be moved inside RectsWithSpecifiedDimensions() method
+
+					rq.RectsWithSpecifiedDimensions(choice, S) ;
+
+					break ;
+
+				case 8:
+					rq.RectsWithIdenticalDimensions() ;
+					break ;
+
+				default:
+					System.out.println("Invalid choice entered.") ;
+				}   // end of switch case
+			}   // end of while loop
+
+		}
+	}
+	
+	
+
+/*
+
+Future scope / improvements
+
+1. Certain content can be moved to the respective methods. Eg, instead of asking user to enter rectangle id in the switch case and then calling method, call the method from switch and then inside the method ask user to enter the rect id & other details [ if any ].
+
+2. While entering a new record, a mechanism can be incorporated to ensure rectangle id's are unique
+
+3. One can use method within a particular switch case only to handle / choose the operation that has to be performed if one has to avoid nested switch cases or have lesser code in cases of switch statement
+
+4. Exception handling can be implemented to validate user input especially in switch case
+
+*/
